@@ -20,8 +20,8 @@ const PostContainer = (props) => {
                 </div>
                     <img src={props.img} alt ="user post" />
                     <div className = 'icons'> 
-                    <FontAwesomeIcon icon={faHeart} className ='heart' />
-                    <FontAwesomeIcon icon={faComment} className ='comment'/>
+                        <i class="far fa-heart"></i>
+                        <i class="far fa-comment"></i>
                     </div>
                         <p className ='likes'> {props.likes} likes </p>
                         <CommentSection comments = {props.comments}   timestamp={props.timestamp}/>

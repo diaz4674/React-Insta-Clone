@@ -12,10 +12,13 @@ export default class SearchBar extends React.Component {
             <NavLink href="#"><img src = {logo} alt ="Instagram Logo" className = 'logo'/></NavLink>
             <NavLink href="#"><img src = {Instagram_logo} alt = "Instagram Logo" className = 'instagramTitle'/></NavLink>
         </div>
-            <input type ='text' placeholder = 'search'  className ='search'/>
-        <div> 
-
+            <input type ='text' placeholder = ' &#xf002; Search'  className ='search fas' /> 
+        <div className = 'userLogos'>
+            <i class="far fa-compass"></i>
+            <i class="far fa-heart"></i>
+            <i class="far fa-user"></i>
         </div>
+
       </div>
     );
   }

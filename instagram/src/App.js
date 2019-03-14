@@ -14,11 +14,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-     
+        <SearchBar />
        { this.state.dummyData.map(post => {
          return(
            <div>
-            <SearchBar />
             <PostContainer timestamp = {post.timestamp} thumbnail = {post.thumbnailUrl} username = {post.username} img = {post.imageUrl} likes = {post.likes} comments = {post.comments}/>
           </div>
          )

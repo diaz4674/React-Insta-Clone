@@ -31,15 +31,16 @@ img {
 }
 
 .icons {
-    margin: 0 15px;
+    display: flex;
+    justify-content: center;
+    margin: 5px 18px;
 
 }
 
-.heart, .comment {
-        padding: 8px;
-        font-size: 2em;
-    }
-
+.fa-heart:before {
+    margin-right: 5px; 
+}
 .likes{
     margin: 0 25px;
+    font-weight: bold;
 }
