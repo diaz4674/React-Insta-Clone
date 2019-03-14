@@ -1,0 +1,45 @@
+.postContainer {
+    width: 500px;
+    margin: 0 auto;
+    border: solid .3px lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+.postHeader {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px 10px 10px; 
+
+}
+
+.thumbnail {
+    height: 50px;
+    width: 50px;
+    border-radius: 80%;
+}
+
+.poster {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+img {
+    width: 100%;
+}
+
+.icons {
+    margin: 0 15px;
+
+}
+
+.heart, .comment {
+        padding: 8px;
+        font-size: 2em;
+    }
+
+.likes{
+    margin: 0 25px;
+}

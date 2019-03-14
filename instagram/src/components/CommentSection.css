@@ -1,0 +1,29 @@
+.commentsContainer {
+
+    margin: 0 20px;
+}
+
+.comments{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+h4, p {
+    margin:5px 3px;
+}
+
+.timestamp {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: gray;
+}
+
+.addComment {
+    border: none;
+    border-top: solid lightgray 1px;
+    width: 100%;
+    padding: 10px 0; 
+    font-size: 18px;
+}
