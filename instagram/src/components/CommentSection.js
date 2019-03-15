@@ -16,23 +16,36 @@ class CommentSection extends React.Component{
 
         this.setState({
             comments: this.props.comments,
-            changeHandler: this.props.changeHandler
+            changeHandler: this.props.changeHandler,
+            timestamp: this.props.timestamp,
+            comment: this.props.comment,
+            addComentHandler: this.props.addComentHandler
         })
+    }
+
+    addComentHandler= e => {
+        console.log(this.state.comments)
     }
     render(){
     return (
         <div className = 'commentsContainer'>
-                    <div className = 'comments'> 
-                        <h4>{comments.username}</h4>
-                        <p> {comments.text}</p>
-                    </div>
-            }
-            <p className = 'timestamp'> {props.timestamp}</p>
-            <div className= 'commentAddSection'>
-            <input input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={props.comment} onChange ={props.changeHandler}/><button  className = 'commentBtn' onClick ={props.addComentHandler}>Post</button>
-            </div>
+    { this.state.comments.map(recentComments => {
+        return (
+            <div>
+                <div className = 'comments'> 
+                    <h4>{recentComments.username}</h4>
+                    <p> {recentComments.text}</p>
+                </div>
         </div>
-    
+        )
+
+}
+
+)}               <p className = 'timestamp'> {this.state.timestamp} </p>
+  <div className= 'commentAddSection'>
+        <input input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={this.state.comment} onChange ={this.state.changeHandler}/><button  className = 'commentBtn' onClick ={this.addComentHandler}>Post</button>
+        </div>
+           </div>
     )
     }
 }
