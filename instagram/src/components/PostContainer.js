@@ -24,7 +24,7 @@ const PostContainer = (props) => {
                         <i class="far fa-comment"></i>
                     </div>
                         <p className ='likes'> {props.likes} likes </p>
-                        <CommentSection comments = {props.comments}   timestamp={props.timestamp}/>
+                        <CommentSection comments = {props.comments} comment = {props.comment} newComment = {props.newComment} changeHandler = {props.changeHandler} timestamp={props.timestamp} newComment= {props.newComment} addComentHandler ={props.addComentHandler}/>
         </div>)
 }
 
