@@ -19,12 +19,8 @@ const PostContainer = (props) => {
                     <h4 className ='poster'> {props.username}</h4>
                 </div>
                     <img src={props.img} alt ="user post" />
-                    <div className = 'icons'> 
-                        <i class="far fa-heart"></i>
-                        <i class="far fa-comment"></i>
-                    </div>
-                        <p className ='likes'> {props.likes} likes </p>
-                        <CommentSection comments = {props.comments} comment = {props.comment} newComment = {props.newComment} changeHandler = {props.changeHandler} timestamp={props.timestamp} newComment= {props.newComment} addComentHandler ={props.addComentHandler}/>
+
+                        <CommentSection comments = {props.comments} likes = {props.likes} comment = {props.comment} newComment = {props.newComment} changeHandler = {props.changeHandler} timestamp={props.timestamp} newComment= {props.newComment} addComentHandler ={props.addComentHandler}/>
         </div>)
 }
 

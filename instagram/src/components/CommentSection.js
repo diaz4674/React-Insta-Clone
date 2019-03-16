@@ -9,6 +9,7 @@ class CommentSection extends React.Component{
         super(props);
         this.state = {
             comments:[],
+            comment: '',
         };
     }
 
@@ -18,19 +19,53 @@ class CommentSection extends React.Component{
             comments: this.props.comments,
             changeHandler: this.props.changeHandler,
             timestamp: this.props.timestamp,
-            comment: this.props.comment,
-            addComentHandler: this.props.addComentHandler
+            likes: this.props.likes,
+            clicks: 0,
+            show: true
         })
     }
+    
+
+    changeHandler = e => {
+        this.setState({comment: e.target.value }, )
+    
+      }
 
     addComentHandler= e => {
-        console.log(this.state.comments)
+        this.setState({comments: this.state.comments.concat({username: 'Ricky Bobby', text: `${this.state.comment}`}), comment: ''})
+        e.preventDefault()
     }
+
+
+
+    likeHandler = () => {
+        
+    this.setState(prevState => {
+        return{
+            show: !prevState.show,
+
+        }
+    })
+
+    {
+        this.state.show ? this.setState( prevState => {
+            return{
+            likes: prevState.likes += 1,}
+        }) : this.setState(prevState => { return {likes: prevState.likes -=1}})
+    
+    }
+    }
+
     render(){
     return (
         <div className = 'commentsContainer'>
+                     <div className = 'icons'> 
+                        <i className="far fa-heart" onClick ={this.likeHandler} ></i>
+                        <i className="far fa-comment"></i>
+                    </div>
+                        <p className ='likes'> {this.state.likes} likes </p>       
     { this.state.comments.map(recentComments => {
-        return (
+        return ( 
             <div>
                 <div className = 'comments'> 
                     <h4>{recentComments.username}</h4>
@@ -42,9 +77,13 @@ class CommentSection extends React.Component{
 }
 
 )}               <p className = 'timestamp'> {this.state.timestamp} </p>
-  <div className= 'commentAddSection'>
-        <input input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={this.state.comment} onChange ={this.state.changeHandler}/><button  className = 'commentBtn' onClick ={this.addComentHandler}>Post</button>
-        </div>
+
+        <form onSubmit = {this.addComentHandler}> 
+            <div className= 'commentAddSection'>
+                <input input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={this.state.comment} onChange ={this.changeHandler}/><button  className = 'commentBtn' onClick ={this.addComentHandler}>Post</button>
+            </div>
+        </form>
+
            </div>
     )
     }

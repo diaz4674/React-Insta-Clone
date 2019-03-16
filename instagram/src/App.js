@@ -4,25 +4,45 @@ import dummyData from './dummy-data';
 import PostContainer from './components/PostContainer';
 import SearchBar from './components/SearchBar';
 
+
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      dummyData: dummyData,
-      comment: '',
-      newComment: []
+       dummyData,
+      data: [],
+      search: '',
+
     };
   }
 
-  changeHandler = e => {
-    this.setState({comment: e.target.value }, )
-
+  componentDidMount(){
+    this.setState({
+      data: dummyData
+    })
   }
+
+  searchHandler = (event) =>{
+    this.setState({
+      search: event.target.value
+    })
+    
+    if(this.state.search.length > 0){
+      const filteredData = this.state.data.filter((word) => {
+        return word.username.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;})
+        this.setState({data: filteredData})
+    } else {
+      this.setState({data: dummyData})
+    }
+  }
+
+
+
   render() {
     return (
       <div className="App">
-        <SearchBar />
-       { this.state.dummyData.map(post => {
+        <SearchBar searchHandler ={this.searchHandler} search ={this.statesearch} />
+       { this.state.data.map(post => {
          return(
            <div>
             <PostContainer timestamp = {post.timestamp} thumbnail = {post.thumbnailUrl} username = {post.username} img = {post.imageUrl} likes = {post.likes} comments = {post.comments} newComment ={this.newComment} addComentHandler ={this.addComentHandler} changeHandler = {this.changeHandler} comment = {this.state.comment} newComment = {this.state.newComment}/>

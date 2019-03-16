@@ -29,18 +29,3 @@
 img {
     width: 100%;
 }
-
-.icons {
-    display: flex;
-    justify-content: center;
-    margin: 5px 18px;
-
-}
-
-.fa-heart:before {
-    margin-right: 5px; 
-}
-.likes{
-    margin: 0 25px;
-    font-weight: bold;
-}
