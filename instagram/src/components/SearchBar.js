@@ -13,8 +13,9 @@ const SearchBar = (props) => {
             <NavLink href="#"><img src = {logo} alt ="Instagram Logo" className = 'logo'/></NavLink>
             <NavLink href="#"><img src = {Instagram_logo} alt = "Instagram Logo" className = 'instagramTitle'/></NavLink>
         </div>
-            <input type ='text' placeholder = ' &#xf002; Search' name = {props.search} value = {props.search} onChange= {props.searchHandler} className ='search fas' /> 
-
+          <form> 
+            <input type ='text' placeholder = ' &#xf002; Search' name = {props.search} value = {props.search} onChange= {(e) => {props.searchHandler(e)}} className ='search fas' /> 
+          </form>
         <div className = 'userLogos'>
             <i className="far fa-compass"></i>
             <i className="far fa-heart"></i>

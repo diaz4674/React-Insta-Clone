@@ -32,7 +32,7 @@ class CommentSection extends React.Component{
       }
 
     addComentHandler= e => {
-        this.setState({comments: this.state.comments.concat({username: 'Ricky Bobby', text: `${this.state.comment}`}), comment: ''})
+        this.setState({comments: this.state.comments.concat({username: localStorage.getItem('username'), text: `${this.state.comment}`}), comment: ''})
         e.preventDefault()
     }
 

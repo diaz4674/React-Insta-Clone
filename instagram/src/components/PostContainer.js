@@ -11,17 +11,30 @@ import {faComment} from "@fortawesome/free-solid-svg-icons";
 
 
 
-const PostContainer = (props) => {
-    return (
-        <div className = 'postContainer'>
-                <div className = 'postHeader'> 
-                    <img src = {props.thumbnail} alt = 'user thumbnail' className = 'thumbnail'/>
-                    <h4 className ='poster'> {props.username}</h4>
-                </div>
-                    <img src={props.img} alt ="user post" />
 
-                        <CommentSection comments = {props.comments} likes = {props.likes} comment = {props.comment} newComment = {props.newComment} changeHandler = {props.changeHandler} timestamp={props.timestamp} newComment= {props.newComment} addComentHandler ={props.addComentHandler}/>
-        </div>)
+
+const PostContainer = (props) => {
+
+    const posts = props.data.filter((word) => {
+        return word.username.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;}).map(post => {
+        return (
+            <div className = 'postContainer'>
+                    <div className = 'postHeader'> 
+                        <img src = {post.thumbnailUrl} alt = 'user thumbnail' className = 'thumbnail'/>
+                        <h4 className ='poster'> {post.username}</h4>
+                    </div>
+                        <img src={post.imageUrl} alt ="user post" />
+                            <CommentSection comments = {post.comments} likes = {post.likes} comment = {post.comment} newComment = {post.newComment} changeHandler = {post.changeHandler} timestamp={post.timestamp} newComment= {post.newComment} addComentHandler ={post.addComentHandler}/>
+            </div>)
+    })
+
+    return (
+        <div>
+            {posts}
+        </div>
+    )
+    
+
 }
 
 PostContainer.propTypes = {
