@@ -1,63 +1,11 @@
-.commentsContainer {
-
-    margin: 0 20px;
-}
-
-.comments{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-h4, p {
-    margin:5px 3px;
-}
-
-.timestamp {
-    display: flex;
-    justify-content: flex-start;
-    font-size: 14px;
-    color: gray;
-}
-
-.addComment {
-    border: none;
-    width: 100%;
-    padding: 10px 5px; 
-    font-size: 18px;
-}
-
-.commentAddSection{
-    display: flex;
-    justify-content: center;
-    border-top: solid lightgray 1px;
-}
-
-.commentBtn {
-    background-color: white;
-    color: lightblue;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.commentBtn:hover{
-    color: blue;
-}
-
-.icons {
-    display: flex;
-    justify-content: flex-start;
-    margin: 5px 0px;
-
-}
-
 .fa-heart:before {
     margin-right: 5px; 
     cursor: pointer;
+    margin-bottom: 
 }
-.likes{
-    display: flex;
-    justify-content: flex-start;
-    font-weight: bold;
+
+form {
+    width: 100%;
+    padding: 5px;
+
 }

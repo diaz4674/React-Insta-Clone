@@ -1,4 +1,6 @@
 import React from 'react';
+import './Login.css'
+import Instagram_logo from '../../imgs/Instagram_logo.svg';
 
 class Login extends React.Component {
     constructor(props){
@@ -25,8 +27,11 @@ class Login extends React.Component {
     }
     render(){
     return(
-        <div>
-                 <h1> Please Login/Create a Login</h1> 
+        <div className ='loginPage'>
+            <div className = 'inputField'>
+                <img  src = {Instagram_logo}  className = 'IGLogo' />
+                 <h1> Login/Create User</h1> 
+            </div>
             <form>
                 <input type = "text" placeholder = "Username" value = {this.state.username} onChange ={this.usernameValue} /> 
                 <input type = "text" placeholder = "Password" value = {this.state.password} onChange = {this.passwordValue}/>

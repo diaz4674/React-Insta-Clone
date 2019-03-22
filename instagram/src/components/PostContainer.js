@@ -2,30 +2,50 @@ import React from 'react';
 import CommentSection from './CommentSection';
 import './PostContainer.css';
 import PropTypes from 'prop-types';
+import styled from 'styled-components'
+import Poster from '../Styles/Reusables'
 
 
-// fontawesome imports
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faComment} from "@fortawesome/free-solid-svg-icons";
+const PostContain = styled.div `
+    width: 594px;
+    margin: 0 auto;
+    border: solid .3px lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+`
 
+const PostHeader = styled.div `
+    display: flex;
+    justify-content: center;
+    padding: 0 10px 10px 10px; 
+`
 
+const PostImg = styled.img `
+    width: 100%;
+`
 
-
+const ThumbnailStyle = styled.img `
+    height: 50px;
+    width: 50px;
+    border-radius: 80%;
+    
+`
 
 const PostContainer = (props) => {
 
     const posts = props.data.filter((word) => {
         return word.username.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;}).map(post => {
         return (
-            <div className = 'postContainer'>
-                    <div className = 'postHeader'> 
-                        <img src = {post.thumbnailUrl} alt = 'user thumbnail' className = 'thumbnail'/>
-                        <h4 className ='poster'> {post.username}</h4>
-                    </div>
-                        <img src={post.imageUrl} alt ="user post" />
+            <PostContain>
+                    <PostHeader> 
+                        <ThumbnailStyle src = {post.thumbnailUrl} alt = 'user thumbnail' className = 'thumbnail'/>
+                        <Poster poster> {post.username}</Poster>
+                    </PostHeader>
+                        <PostImg src={post.imageUrl} alt ="user post" />
                             <CommentSection comments = {post.comments} likes = {post.likes} comment = {post.comment} newComment = {post.newComment} changeHandler = {post.changeHandler} timestamp={post.timestamp} newComment= {post.newComment} addComentHandler ={post.addComentHandler}/>
-            </div>)
+            </PostContain>)
     })
 
     return (

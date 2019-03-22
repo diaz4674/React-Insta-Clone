@@ -1,7 +1,79 @@
 import React from 'react';
 import './CommentSection.css'
 import PropTypes from 'prop-types';
+import Poster from '../Styles/Reusables';
+import styled from 'styled-components';
 
+const CommentsContainer = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+`
+
+const Icons = styled.div `
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px 0px;
+`
+
+const Likes = styled.p `
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+`
+
+
+const Comment = styled.span `
+    padding: 0 0 0 7px;
+`
+const CommentsContain = styled.div `
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 0;
+    width: 100%;
+
+`
+
+const TimeStamp = styled.p `
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+`
+
+const AddComment = styled.div `
+    display: flex;
+    justify-content: center;
+    border-top: solid lightgray 1px;
+    width: 97%;
+`
+
+const InputComment = styled.input `
+    border: none;
+    width: 100%;
+    padding: 10px 10px; 
+    font-size: 18px;
+
+`
+
+const ButtonPost = styled.button `
+    background-color: white;
+    color: lightblue;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    &:hover {
+        color: blue;
+    }
+
+`
+
+const Contain = styled.div `
+    margin: 0 27px;
+`
 
 class CommentSection extends React.Component{
 
@@ -13,9 +85,7 @@ class CommentSection extends React.Component{
         };
     }
 
-    componentDidMount(){
-
-        this.setState({
+    componentDidMount(){ this.setState({
             comments: this.props.comments,
             changeHandler: this.props.changeHandler,
             timestamp: this.props.timestamp,
@@ -25,10 +95,8 @@ class CommentSection extends React.Component{
         })
     }
     
-
     changeHandler = e => {
         this.setState({comment: e.target.value }, )
-    
       }
 
     addComentHandler= e => {
@@ -36,57 +104,50 @@ class CommentSection extends React.Component{
         e.preventDefault()
     }
 
-
-
     likeHandler = () => {
-        
-    this.setState(prevState => {
-        return{
-            show: !prevState.show,
 
-        }
-    })
-
-    {
-        this.state.show ? this.setState( prevState => {
+        this.setState(prevState => {
             return{
-            likes: prevState.likes += 1,}
-        }) : this.setState(prevState => { return {likes: prevState.likes -=1}})
-    
-    }
+            show: !prevState.show,
+            }
+        })
+        {
+            this.state.show ? this.setState( prevState => {
+            return{likes: prevState.likes += 1,}
+            }) : this.setState(prevState => { return {likes: prevState.likes -=1}})
+        }
     }
 
     render(){
     return (
-        <div className = 'commentsContainer'>
-                     <div className = 'icons'> 
-                        <i className="far fa-heart" onClick ={this.likeHandler} ></i>
-                        <i className="far fa-comment"></i>
-                    </div>
-                        <p className ='likes'> {this.state.likes} likes </p>       
-    { this.state.comments.map(recentComments => {
-        return ( 
-            <div>
-                <div className = 'comments'> 
-                    <h4>{recentComments.username}</h4>
-                    <p> {recentComments.text}</p>
-                </div>
-        </div>
-        )
+        <CommentsContainer>
+            <Contain>
+            <Icons> 
+                <i className="far fa-heart" onClick ={this.likeHandler} ></i>
+                <i className="far fa-comment"></i>
+            </Icons>
+            <Likes> {this.state.likes} likes </Likes>  
 
-}
+            { this.state.comments.map(recentComments => {
+                return (
+                    <CommentsContain>                  
+                        <Poster notPoster>{recentComments.username}</Poster>
+                        <Comment>  {recentComments.text}  </Comment>
+                    </CommentsContain>
+                )
+                }
+            )}               
+            <TimeStamp> {this.state.timestamp} </TimeStamp>
+            </Contain>
+            <form onSubmit = {this.addComentHandler}> 
+                <AddComment>
+                    <InputComment input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={this.state.comment} onChange ={this.changeHandler}/>
+                    <ButtonPost  className = 'commentBtn' onClick ={this.addComentHandler}>Post</ButtonPost>
+                </AddComment>
+            </form>
 
-)}               <p className = 'timestamp'> {this.state.timestamp} </p>
-
-        <form onSubmit = {this.addComentHandler}> 
-            <div className= 'commentAddSection'>
-                <input input = 'text' placeholder = 'Add a comment...' className = "addComment" value ={this.state.comment} onChange ={this.changeHandler}/><button  className = 'commentBtn' onClick ={this.addComentHandler}>Post</button>
-            </div>
-        </form>
-
-           </div>
-    )
-    }
+        </CommentsContainer>
+            )}
 }
 
 
